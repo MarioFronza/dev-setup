@@ -1,12 +1,10 @@
 #!/bin/bash
 
-# Exit on error
 set -e
 
 TMP_DIR="/tmp"
 INSTALL_DIR="$HOME/.local/share/JetBrains/Toolbox/bin"
 SYMLINK_DIR="$HOME/.local/bin"
-
 
 echo -e "\e[94mFetching the URL of the latest version...\e[39m"
 ARCHIVE_URL=$(curl -s 'https://data.services.jetbrains.com/products/releases?code=TBA&latest=true&type=release' | grep -Po '"linux":.*?[^\\]",' | awk -F ':' '{print $3,":"$4}'| sed 's/[", ]//g')
@@ -35,3 +33,6 @@ if [ -z "$CI" ]; then
 else
 	echo -e "\n\e[32mDone! Running in a CI -- skipped launching the AppImage.\e[39m\n"
 fi
+
+# Gnome Tewak Tool
+sudo apt install gnome-tweaks

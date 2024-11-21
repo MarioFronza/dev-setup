@@ -19,6 +19,7 @@ sudo mv nvim-linux64 /opt/nvim
 echo "Creating symlink for nvim..."
 sudo ln -s /opt/nvim/nvim-linux64/bin/nvim /usr/local/bin/nvim
 dd
+
 # Verify the installation
 echo "Verifying Neovim installation..."
 nvim --version

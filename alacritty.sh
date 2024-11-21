@@ -16,11 +16,6 @@ sudo apt install -y \
     libxkbcommon-dev \
     python3
 
-# Install Rust using rustup (if not already installed)
-echo "Rust not found, installing Rust..."
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
-source $HOME/.cargo/env  # Add rust to the environment for the current session
-
 # Clone the Alacritty repository
 echo "Cloning the Alacritty repository..."
 git clone https://github.com/alacritty/alacritty.git

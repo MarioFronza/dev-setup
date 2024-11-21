@@ -1,34 +1,30 @@
-#!/bin/zsh
+#!/bin/bash
 
 set -e
 
-# Install Oh My Zsh
-echo "Installing Oh My Zsh..."
+echo -e "\e[94mInstalling Zsh...\e[39m"
+sudo apt install -y zsh
+
+echo -e "\e[94mInstalling Oh My Zsh...\e[39m"
 RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# Set Zsh as the default shell
-echo "Setting Zsh as the default shell..."
+echo -e "\e[94mSetting Zsh as the default shell...\e[39m"
 chsh -s $(which zsh)
 
-# Install Powerlevel10k theme
-echo "Installing Powerlevel10k theme..."
+echo ""
+echo -e "\e[94mInstalling Powerlevel10k theme...\e[39m"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
 
-# Install recommended plugins
-echo "Installing recommended plugins..."
+echo -e "\e[94mInstalling recommended plugins...\e[39m"
 PLUGINS_DIR="$HOME/.oh-my-zsh/custom/plugins"
 
-# zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions $PLUGINS_DIR/zsh-autosuggestions
 
-# zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-syntax-highlighting $PLUGINS_DIR/zsh-syntax-highlighting
 
-# Update .zshrc to include plugins
-echo "Updating .zshrc to include plugins..."
+echo -e "\e[94mUpdating .zshrc to include plugins...\e[39m"
 
-# Apply changes
-echo "Applying changes..."
+echo -e "\e[94mApplying changes...\e[39m"
 source $HOME/.zshrc
 
-echo "Zsh setup is complete! Restart your terminal to use Zsh."
+echo -e "\e[94mZsh setup is complete! Restart your terminal to use Zsh.\e[39m"
