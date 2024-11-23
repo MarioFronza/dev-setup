@@ -1,32 +1,24 @@
 #!/bin/bash
 
-# Exit immediately if a command exits with a non-zero status
 set -e
 
-# Download Neovim v0.10.2 tarball
-echo "Downloading Neovim v0.10.2..."
+echo -e "\e[94mDownloading Neovim v0.10.2...\e39m"
 curl -L -o nvim-linux64.tar.gz https://github.com/neovim/neovim/releases/download/v0.10.2/nvim-linux64.tar.gz
 
-# Extract the tarball
-echo "Extracting Neovim tarball..."
+echo -e "\e[94mExtracting Neovim tarball...\e39m"
 tar xzvf nvim-linux64.tar.gz
 
-# Move the extracted files to a proper location
-echo "Moving Neovim files to /opt/nvim..."
+echo -e "\e[94mMoving Neovim files to /opt/nvim...\e39m"
 sudo mv nvim-linux64 /opt/nvim
 
-# Create a symlink for easy access to nvim
-echo "Creating symlink for nvim..."
+echo -e "\e[94mCreating symlink for nvim...\e39m"
 sudo ln -s /opt/nvim/nvim-linux64/bin/nvim /usr/local/bin/nvim
-dd
 
-# Verify the installation
-echo "Verifying Neovim installation..."
+echo -e "\e[94mVerifying Neovim installation...\e39m"
 nvim --version
 
-# Clean up the tarball
-echo "Cleaning up tarball..."
+echo -e "\e[94mCleaning up tarball...\e39m"
 rm nvim-linux64.tar.gz
 
-echo "Neovim v0.10.2 has been installed successfully!"
+echo -e "\e[94mNeovim v0.10.2 has been installed successfully!\e39m"
 

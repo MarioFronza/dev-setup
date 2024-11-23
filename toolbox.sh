@@ -33,6 +33,3 @@ if [ -z "$CI" ]; then
 else
 	echo -e "\n\e[32mDone! Running in a CI -- skipped launching the AppImage.\e[39m\n"
 fi
-
-# Gnome Tewak Tool
-sudo apt install gnome-tweaks

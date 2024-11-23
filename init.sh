@@ -22,4 +22,22 @@ echo -e "\e[94mCalling langs.sh\e[39m"
 echo -e "\e[94mCalling docker.sh\e[39m"
 ./docker.sh
 
+echo -e "\e[94mCalling alacritty.sh\e[39m"
+./alacritty
+
+echo -e "\e[94mCalling neovim.sh\e[39m"
+./neovim
+
+echo -e "\e[94mCalling toolbox.sh\e[39m"
+./toolbox
+
+echo -e "\e[94mCalling tmux.sh\e[39m"
+./tmux
+
+echo -e "\e[94mCalling dotfiles.sh\e[39m"
+./dotfiles
+
+echo -e "\e[94mCalling apps.sh\e[39m"
+./apps
+
 echo -e "\e[94mAll setup scripts executed successfully!\e[39m"

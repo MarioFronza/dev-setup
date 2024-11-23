@@ -1,28 +1,21 @@
 #!/bin/bash
 
-# Exit immediately if a command exits with a non-zero status
 set -e
 
-# Define the repository URL
 DOTFILES_REPO="https://github.com/MarioFronza/dotfiles.git"
 DOTFILES_DIR="$HOME/Workspaces/github/dotfiles" 
 
-# Create the target directory if it doesn't exist
-echo "Creating the directory for dotfiles..."
+echo -e "\e[94mCreating the directory for dotfiles...\e[39m"
 mkdir -p "$HOME/Workspaces/github"
 
-# Clone the dotfiles repository
-echo "Cloning the dotfiles repository..."
+echo -e "\e[94mCloning the dotfiles repository...\e[39m"
 git clone "$DOTFILES_REPO" "$DOTFILES_DIR"
 
-# Navigate to the repository directory
-echo "Navigating to the dotfiles directory..."
+echo -e "\e[94mNavigating to the dotfiles directory...\e[39m"
 cd "$DOTFILES_DIR"
 
-# Run the bootstrap script to install the dotfiles
-echo "Running the bootstrap script to install dotfiles..."
+echo -e "\e[94mRunning the bootstrap script to install dotfiles...\e[39m"
 ./install/bootstrap.sh
 
-# Confirm completion
-echo "Dotfiles setup completed successfully!"
+echo -e "\e[94mDotfiles setup completed successfully!\e[39m"
 

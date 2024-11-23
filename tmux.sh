@@ -1,13 +1,10 @@
 #!/bin/bash
 
-# Exit immediately if a command exits with a non-zero status
 set -e
 
-# Install tmux
-echo "Installing tmux..."
+echo -e "\e[94mInstalling tmux...\e[39m"
 sudo apt update
 sudo apt install -y tmux
 
-# Verify installation
-echo "Verifying tmux installation..."
+echo -e "\e[94mVerifying tmux installation...\e[39m"
 tmux -V

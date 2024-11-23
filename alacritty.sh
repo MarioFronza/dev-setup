@@ -1,10 +1,8 @@
 #!/bin/bash
 
-# Exit immediately if a command exits with a non-zero status
 set -e
 
-# Update the system and install dependencies
-echo "Updating the system and installing dependencies..."
+echo -e "\e[94mUpdating the system and installing dependencies...\e[39m"
 sudo apt update
 sudo apt install -y \
     cmake \
@@ -16,48 +14,36 @@ sudo apt install -y \
     libxkbcommon-dev \
     python3
 
-# Clone the Alacritty repository
-echo "Cloning the Alacritty repository..."
+echo -e "\e[94mCloning the Alacritty repository...\e[39m"
 git clone https://github.com/alacritty/alacritty.git
 cd alacritty
 
-# Build Alacritty using Cargo
-echo "Building Alacritty..."
+echo -e "\e[94mBuilding Alacritty...\e[39m"
 cargo build --release
 
-# Install the Alacritty binary
-echo "Installing Alacritty..."
+echo -e "\e[94mInstalling Alacritty...\e[39m"
 sudo cp target/release/alacritty /usr/local/bin
 
-# Install Alacritty's desktop entry (optional for launcher)
-echo "Setting up desktop entry..."
+echo -e "\e[94mSetting up desktop entry...\e[39m"
 sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
 sudo desktop-file-install extra/linux/Alacritty.desktop
 sudo update-desktop-database
 
-# Check if Alacritty was installed successfully
-echo "Verifying Alacritty installation..."
+echo -e "\e[94mVerifying Alacritty installation...\e[39m"
 alacritty --version
 
-# Cleanup the temporary Alacritty folder
-echo "Cleaning up temporary Alacritty repository..."
+echo -e "\e[94mCleaning up temporary Alacritty repository...\e[39m"
 cd ..
 rm -rf alacritty
 
-# Theme
-# Set the theme repository URL
 THEME_REPO="https://github.com/alacritty/alacritty-theme"
 THEME_DIR="$HOME/.config/alacritty/themes"
 
-# Create the themes directory if it doesn't exist
 mkdir -p $THEME_DIR
 
-# Clone the theme repository into the themes directory
-echo "Cloning Alacritty theme repository..."
+echo -e "\e[94mCloning Alacritty theme repository...\e[39m"
 git clone $THEME_REPO $THEME_DIR
 
-# Confirm completion
-echo "Theme cloned successfully into $THEME_DIR"
+echo -e "\e[94mTheme cloned successfully into $THEME_DIR\e[39m"
 
-
-echo "Alacritty has been installed successfully."
+echo -e "\e[94mAlacritty has been installed successfully.\e[39m"
