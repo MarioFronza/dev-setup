@@ -26,3 +26,6 @@ sudo apt-get install -y "$DISCORD_DEB"
 
 echo -e "\e[94mCleaning up...\e[39m"
 rm -rf "$TEMP_DIR"
+
+echo -e "\e[94mInstalling Gear Lever...\e[39m"
+flatpak install -y flathub it.mijorus.gearlever
