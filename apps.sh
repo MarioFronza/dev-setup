@@ -7,7 +7,7 @@ sudo apt install gnome-tweaks
 
 echo -e "\e[94mInstalling Spotify...\e[39m"
 echo -e "\e[94mAdding Spotify's GPG key...\e39m"
-curl -sS https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+curl -sS https://download.spotify.com/debian/pubkey_C85668DF69375001.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
 
 echo -e "\e[94mAdding Spotify's repository...\e39m"
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
@@ -29,3 +29,6 @@ rm -rf "$TEMP_DIR"
 
 echo -e "\e[94mInstalling Gear Lever...\e[39m"
 flatpak install -y flathub it.mijorus.gearlever
+
+echo -e "\e[94mInstalling VLC...\e[39m"
+sudo snap install vlc
