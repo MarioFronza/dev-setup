@@ -15,6 +15,7 @@ sudo apt install -y --no-install-recommends \
       xclip \
       vim \
       htop \
+      zip \
       iproute2
 
 echo "Essential packages installed successfully."
