@@ -16,6 +16,10 @@ sudo apt install -y --no-install-recommends \
       vim \
       htop \
       zip \
+      unzip \
+      ca-certificates \
+      gnupg \
+      tar \
       iproute2
 
 echo "Essential packages installed successfully."
