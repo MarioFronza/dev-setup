@@ -78,11 +78,13 @@ sudo apt install -y python3 python3-pip
 if ! command -v go > /dev/null; then
     echo "Installing Go..."
     GO_VERSION=$(curl -s https://go.dev/VERSION?m=text | grep -oE '^go[0-9]+\.[0-9]+\.[0-9]+')
-    curl -OL "https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz"
-    sudo tar -C /usr/local -xzf "go${GO_VERSION}.linux-amd64.tar.gz"
-    rm "go${GO_VERSION}.linux-amd64.tar.gz"
-    echo "export PATH=\$PATH:/usr/local/go/bin" >> "$HOME/.profile"
-    source "$HOME/.profile"
+    GO_TAR="${GO_VERSION}.linux-amd64.tar.gz"
+    echo "$GO_TAR"
+    curl -OL "https://go.dev/dl/${GO_TAR}"
+    sudo tar -C /usr/local -xzf "${GO_TAR}"
+    rm "${GO_TAR}"
+    echo "export PATH=\$PATH:/usr/local/go/bin" >> "$HOME/.zshrc"
+    export PATH=$PATH:/usr/local/go/bin
 fi
 
 ### Install Rust ###
