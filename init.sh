@@ -1,43 +1,42 @@
 #!/bin/bash
 
 set -e
+export DEBIAN_FRONTEND=noninteractive  
 
-echo -e "\e[94mRunning init.sh to execute all setup scripts...\e[39m"
+SCRIPT_DIR="$(cd "$(dirname "$0")/scripts" && pwd)"
 
-echo -e "\e[94mCalling essentials.sh\e[39m"
-./essentials.sh
+echo "Debian setup script!"
+echo "Select which components you want to install:"
+echo "1) Essential packages"
+echo "2) Development tools (Docker, Git, Node.js, Go, Rust, etc.)"
+echo "3) Apps (Spotify, Discord, VLC, Gear Lever)"
+echo "4) Install everything"
 
-echo -e "\e[94mCalling git.sh...\e[39m"
-./git.sh
+read -p "Enter numbers separated by spaces (e.g., 1 3 5): " choices
 
-echo -e "\e[94mCalling zsh.sh...\e[39m"
-./zsh.sh
+install_script() {
+    local script_name="$SCRIPT_DIR/$1.sh"
+    if [ -f "$script_name" ]; then
+        chmod +x "$script_name"
+        echo "Running $1..."
+        "$script_name"
+    else
+        echo "Warning: $1 script not found. Skipping..."
+    fi
+}
 
-echo -e "\e[94mCalling fonts.sh...\e[39m"
-./fonts.sh
+for choice in $choices; do
+    case $choice in
+        1) install_script "essentials" ;;
+        2) install_script "dev-tools" ;;
+        3) install_script "apps" ;;
+        4)
+            install_script "essentials"
+            install_script "dev-tools"
+            install_script "apps"
+            ;;
+        *) echo "Invalid option: $choice" ;;
+    esac
+done
 
-echo -e "\e[94mCalling langs.sh\e[39m"
-./langs.sh
-
-echo -e "\e[94mCalling docker.sh\e[39m"
-./docker.sh
-
-echo -e "\e[94mCalling alacritty.sh\e[39m"
-./alacritty
-
-echo -e "\e[94mCalling neovim.sh\e[39m"
-./neovim
-
-echo -e "\e[94mCalling toolbox.sh\e[39m"
-./toolbox
-
-echo -e "\e[94mCalling tmux.sh\e[39m"
-./tmux
-
-echo -e "\e[94mCalling dotfiles.sh\e[39m"
-./dotfiles
-
-echo -e "\e[94mCalling apps.sh\e[39m"
-./apps
-
-echo -e "\e[94mAll setup scripts executed successfully!\e[39m"
+echo "Installation complete!"
