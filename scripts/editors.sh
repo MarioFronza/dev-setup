@@ -11,8 +11,8 @@ NVIM_URL="https://github.com/neovim/neovim/releases/download/v$NVIM_VERSION/$NVI
 NVIM_INSTALL_DIR="/opt/nvim"
 NVIM_BIN="/usr/local/bin/nvim"
 
-# Check if Neovim is already installed
-if command -v nvim > /dev/null; then
+# Check if Neovim is already installed and working
+if command -v nvim > /dev/null && [ -x "$(command -v nvim)" ]; then
     echo "Neovim is already installed. Skipping installation."
     exit 0
 fi
@@ -33,15 +33,25 @@ sudo mv nvim-linux64 "$NVIM_INSTALL_DIR"
 echo "Creating symlink for nvim..."
 sudo ln -sf "$NVIM_INSTALL_DIR/nvim-linux64/bin/nvim" "$NVIM_BIN"
 
+# Ensure /usr/local/bin is in PATH
+export PATH="/usr/local/bin:$PATH"
+echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.zshrc
+
+# Refresh shell cache to recognize nvim
+hash -r  
+
 # Verify installation
 echo "Verifying Neovim installation..."
-nvim --version
+if command -v nvim > /dev/null; then
+    echo "Neovim v$NVIM_VERSION installed successfully!"
+else
+    echo "Error: Neovim command not found! Try restarting your shell."
+    exit 1
+fi
 
 # Cleanup
 echo "Cleaning up tarball..."
 rm -f "$NVIM_TARBALL"
-
-echo "Neovim v$NVIM_VERSION has been installed successfully."
 
 ### Install Toolbox
 # Define directories
